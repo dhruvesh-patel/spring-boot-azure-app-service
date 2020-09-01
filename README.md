@@ -1,0 +1,1 @@
+This repo demonstrates usage of Spring boot actuator for application level monitoring such as JVM and CPU usage. 
