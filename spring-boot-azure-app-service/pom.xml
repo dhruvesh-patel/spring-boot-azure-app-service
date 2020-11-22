@@ -9,22 +9,25 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dpinc</groupId>
-	<artifactId>spring-boot-rest-actuator</artifactId>
+	<artifactId>spring-boot-azure-app-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-rest-actuator</name>
+	<name>spring-boot-azure-app-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>		
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -60,6 +63,42 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin> 
+    <groupId>com.microsoft.azure</groupId>  
+    <artifactId>azure-webapp-maven-plugin</artifactId>  
+    <version>1.9.1</version>  
+    <configuration> 
+        <schemaVersion>V2</schemaVersion>  
+        <resourceGroup>DPINC</resourceGroup>  
+        <appName>spring-boot-app-service</appName>
+        <appServicePlanResourceGroup>DPINC</appServicePlanResourceGroup>
+        <appServicePlanName>dpinc-app-svc-plan</appServicePlanName>
+        <pricingTier>P2v2</pricingTier>  
+        <region>northeurope</region>  
+        <runtime> 
+            <os>linux</os>  
+            <javaVersion>jre8</javaVersion>  
+        </runtime>  
+        <appSettings> 
+            <property>
+                <name>PORT</name> 
+                <value>8951</value>
+            </property>
+        </appSettings>  
+        <deployment> 
+            <resources> 
+                <resource> 
+                    <directory>${project.basedir}/target</directory>  
+                    <includes> 
+                        <include>*.jar</include> 
+                    </includes> 
+                </resource> 
+            </resources> 
+        </deployment> 
+        <stopAppDuringDeployment>true</stopAppDuringDeployment>
+    </configuration> 
+</plugin> 
+			
 		</plugins>
 	</build>
 

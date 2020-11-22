@@ -1,10 +1,10 @@
-package com.dpinc.springbootrestactuator;
+package com.dpinc.springbootazureappservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootRestActuatorApplicationTests {
+class SpringBootAzureAppServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

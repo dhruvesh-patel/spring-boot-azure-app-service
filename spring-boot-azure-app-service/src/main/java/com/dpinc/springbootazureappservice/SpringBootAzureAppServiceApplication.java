@@ -1,13 +1,13 @@
-package com.dpinc.springbootrestactuator;
+package com.dpinc.springbootazureappservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootRestActuatorApplication {
+public class SpringBootAzureAppServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootRestActuatorApplication.class, args);
+		SpringApplication.run(SpringBootAzureAppServiceApplication.class, args);
 	}
 
 }
